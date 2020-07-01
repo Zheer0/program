@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>我的博客</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="博客" />
+<meta name="description" content="博客" /> 
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link href="__PUBLIC__/style/lady.css" type="text/css" rel="stylesheet" />
+
+
+    <link href="__PUBLIC__/index/css/style.css" type="text/css" rel="stylesheet" />
+    <!-- Favicon -->
+    <!-- Favicon and Touch Icons -->
+    <link href="__PUBLIC__/index/images/favicon.png" rel="shortcut icon" type="image/png">
+    <link href="__PUBLIC__/index/images/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="__PUBLIC__/index/images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="__PUBLIC__/index/images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="__PUBLIC__/index/images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+
+
+<script type='text/javascript' src='__PUBLIC__/images/js/ismobile.js'></script>
+</head>
+
+<body>
+
+
+{include file="../application/index/common/header.html" /}
+<!--顶部通栏-->
+<section class="breadcromb-top section_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="text-white justify-content-center no-border mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Blog </li>
+                </ol>
+                <div class="breadcromb-box">
+                    <h3>Blog Grid</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="position">  </div>
+
+
+<div class="overall">
+                    
+    <div class="left">
+        {volist name="articleres" id="vo"}
+                <div class="xnews2">
+                <div class="pic"><a target="_blank" ><img src="{if condition="$vo['pic'] neq '' "}__IMG__{$vo.pic}{else /}__PUBLIC__/images/error.png{/if}" alt=""/></a></div>
+                <div class="dec">
+                <h3><a target="_blank" href="{:url('article/index',array('arid'=>$vo['id']))}">{$vo.title}</a></h3>
+                <p>描述：{$vo.desc}</p>
+                <div class="time">发布时间：{$vo['time']|date="Y-m-d",###}</div>
+                   <div class="time">
+                    <?php
+                    $arr=explode(',',$vo['keywords']);
+                 foreach ($arr as $k=>$v){
+                 echo "<a >$v</a> ";
+             }
+                    ?>
+                </div>
+                </div>
+                </div>
+                
+        {/volist}
+                
+                <div class="pages">
+                <div class="plist" >
+    {$articleres->render()}
+                </div>
+                </div>
+    </div>
+    
+
+                <!--右侧各种广告-->
+                <!--猜你喜欢-->
+{include file="../application/index/common/right.html" /}
+
+    <script src="__PUBLIC__/index/js/jquery.min.js" type="text/javascript"></script>
+    <script src="__PUBLIC__/index/js/popper.min.js" type="text/javascript"></script>
+    <script src="__PUBLIC__/index/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="__PUBLIC__/index/js/getfund-nav.min.js" type="text/javascript"></script>
+    <script src="__PUBLIC__/index/js/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="__PUBLIC__/index/js/waypoints.min.js" type="text/javascript"></script>
+    <script src="__PUBLIC__/index/js/jquery.counterup.min.js" type="text/javascript"></script>
+    <script src="__PUBLIC__/index/js/swiper.min.js" type="text/javascript"></script>
+    <script src="__PUBLIC__/index/js/custom.js" type="text/javascript"></script>
+
+                    
+    
+</div>
+{include file="../application/index/common/foot.html" /}
+</body>
+</html>
